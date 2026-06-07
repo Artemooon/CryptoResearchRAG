@@ -15,12 +15,6 @@ If you use `uv`, install/sync dependencies with:
 uv sync
 ```
 
-Run commands from the project root:
-
-```bash
-cd /Users/artem/coding/CryptoResearchRAG
-```
-
 ## Start Postgres
 
 The project includes a Docker Compose Postgres service with pgvector enabled. Start it with:
