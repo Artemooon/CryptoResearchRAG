@@ -1,0 +1,34 @@
+{
+  "source_results": "tutoring_results.json",
+  "dataset": "tutoring_comparison_dataset.json",
+  "dataset_sha256": "4e56f2a38c539ee8f9affcfccc6cd39f262fb58bc78cfa25e7b11ec2607fa354",
+  "prompt": "tutor_v2_prompt.txt",
+  "grader_sha256": "ecb5ae12b861a5b06b5b44728a53f2362a2165c12e095acc2bcfa14738f6d583",
+  "model": "gpt-6-luna",
+  "baseline_prompt_version": "baseline (inferred from runner and outputs; original prompt snapshot unavailable)",
+  "case_count": 12,
+  "baseline_mean_score": 7.083333333333333,
+  "baseline_mean_model_score": 6.333333333333333,
+  "status": "completed",
+  "results": "tutoring_results_v2.json",
+  "metrics": {
+    "baseline": {
+      "mean_model_score": 6.333333333333333,
+      "mean_combined_score": 7.083333333333333,
+      "syntax_passes": 6,
+      "syntax_cases": 6
+    },
+    "tutor_v2": {
+      "mean_model_score": 6.666666666666667,
+      "mean_combined_score": 6.375,
+      "syntax_passes": 3,
+      "syntax_cases": 6
+    }
+  },
+  "evaluation_api_requests": 24,
+  "limitations": [
+    "Single run on development cases, not held-out evidence.",
+    "Baseline grader settings were not recorded with the original results.",
+    "Syntax scoring conflicts with justified non-code guidance in some artifact cases."
+  ]
+}

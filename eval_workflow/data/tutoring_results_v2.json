@@ -1,0 +1,373 @@
+[
+  {
+    "output": "Start by checking the list from left to right. What should you do as soon as you find an element equal to `target`?",
+    "test_case": {
+      "id": "tutor-001",
+      "task": "Given a list of integers nums, return the index of the first occurrence of target, or -1 if target is absent. The list may be empty. Example: nums = [4, 2, 7, 2], target = 2 returns 1.",
+      "history": [],
+      "learner_message": "I don't know where to start.",
+      "format": "text"
+    },
+    "score": 9,
+    "model_score": 9,
+    "code_score": null,
+    "grade": {
+      "strengths": [
+        "Offers a simple starting strategy: scan the list from left to right.",
+        "Focuses attention on the key requirement—what to do when the target is found—without giving away the full solution."
+      ],
+      "weaknesses": [],
+      "reasoning": "The learner says they do not know where to start, so this is appropriately small, clear guidance that invites them to take the next step. It could later address what to return if the scan ends without finding the target.",
+      "score": 9
+    },
+    "prompt_version": "tutor_v2"
+  },
+  {
+    "output": "Sure—before I give a full implementation, let’s start with the key idea: as you scan the string, what condition would tell you that the current character should increase the count?What set of characters could you check each letter against to decide whether to increase the count?",
+    "test_case": {
+      "id": "tutor-002",
+      "task": "Given a string s containing lowercase English letters, return the number of vowels in it. The vowels are a, e, i, o, and u. Constraints: 0 <= len(s) <= 10^5. Example: s = \"algorithm\" returns 3.",
+      "history": [],
+      "learner_message": "Can you give me the complete Python solution right away?",
+      "format": "text"
+    },
+    "score": 7,
+    "model_score": 7,
+    "code_score": null,
+    "grade": {
+      "strengths": [
+        "Does not reveal the complete solution before the learner has made an attempt.",
+        "Points toward the core idea: checking each character and counting vowels."
+      ],
+      "weaknesses": [
+        "The two questions largely repeat one another, making the next step less focused.",
+        "It could give a small concrete hint, such as naming the vowel set, instead of asking the learner to supply it from scratch."
+      ],
+      "reasoning": "The learner asks for the complete solution, but there is no attempt in the conversation, so offering guidance rather than the full implementation is appropriate. The response is relevant, though a single focused prompt would be clearer and more helpful.",
+      "score": 7
+    },
+    "prompt_version": "tutor_v2"
+  },
+  {
+    "output": "A set can remember values you’ve already seen. As you scan the list, what should you check before adding the current value to the set?",
+    "test_case": {
+      "id": "tutor-003",
+      "task": "Given a list of integers nums, return True if any value occurs at least twice and False otherwise. Constraints: 0 <= len(nums) <= 10^5. Example: nums = [1, 3, 1] returns True.",
+      "history": [
+        {
+          "role": "assistant",
+          "content": "What simple approach could you use to compare values and detect a repeated pair?"
+        },
+        {
+          "role": "user",
+          "content": "I could compare every pair with nested loops. That seems like it would work, but I'm not sure what happens when the list is empty."
+        },
+        {
+          "role": "assistant",
+          "content": "That approach is logically sound. Think about how many pairs it checks as the list grows, and what result should be returned if no pair is found."
+        }
+      ],
+      "learner_message": "I think the nested loops are still the best way, and I don't understand how to make it faster. Can you give me a hint?",
+      "format": "text"
+    },
+    "score": 9,
+    "model_score": 9,
+    "code_score": null,
+    "grade": {
+      "strengths": [
+        "Offers a simple way to improve on nested loops: use a set to remember values already seen.",
+        "Gives a focused next step by asking what to check before adding each value, rather than revealing the full algorithm."
+      ],
+      "weaknesses": [],
+      "reasoning": "The learner asks for a hint because they are unsure how to make the nested-loop approach faster. The response is accurate, appropriately sized, and guides them toward detecting a repeat in one scan without giving a complete solution.",
+      "score": 9
+    },
+    "prompt_version": "tutor_v2"
+  },
+  {
+    "output": "You can compare the filtered string from both ends without building a reversed copy: keep a left index at the start and a right index at the end, then compare the characters they point to. What should happen to those two indices after a matching pair?After the characters match, move the left index one step right and the right index one step left. Keep comparing until the indices meet or cross. If any pair differs, it isn’t a palindrome; otherwise, it is.",
+    "test_case": {
+      "id": "tutor-004",
+      "task": "Given a string s, return True if it reads the same forward and backward after converting uppercase letters to lowercase and removing every character that is not a letter or digit. Otherwise return False. Constraints: 0 <= len(s) <= 2 * 10^5. Example: s = \"A man, a plan, a canal: Panama\" returns True.",
+      "history": [],
+      "learner_message": "I made a filtered lowercase string, but I'm confused about how to check whether it's a palindrome without making another reversed copy.",
+      "format": "text"
+    },
+    "score": 4,
+    "model_score": 4,
+    "code_score": null,
+    "grade": {
+      "strengths": [
+        "Correctly explains the two-pointer comparison and the stopping condition.",
+        "Builds on the learner’s filtered lowercase string and avoids introducing unnecessary code."
+      ],
+      "weaknesses": [
+        "It gives the full checking procedure before the learner has had a chance to reason through the next step.",
+        "The question about how to move the indices is immediately answered, so it does not function as a useful prompt."
+      ],
+      "reasoning": "The guidance is relevant and technically correct, but it supplies the complete conceptual algorithm despite the learner only expressing confusion and not explicitly asking for the solution. A better next reply would prompt them to consider what to do after a matching pair.",
+      "score": 4
+    },
+    "prompt_version": "tutor_v2"
+  },
+  {
+    "output": "Using `nums = [2, 7, 11, 15]` and `target = 9`, start with an empty map of “value → index.”\n\nAt index `0`, the current value is `2`, so its complement is `9 - 2 = 7`. The map doesn’t contain `7`, so save `2 → 0`. The **current index** is `0`; the **saved index** is the index attached to a value you saw earlier.\n\nWhat would you check at index `1`, where the current value is `7`?",
+    "test_case": {
+      "id": "tutor-005",
+      "task": "Given a list of integers nums and an integer target, return the two distinct indices i and j such that nums[i] + nums[j] == target. Assume exactly one solution exists. Constraints: 2 <= len(nums) <= 10^4. Example: nums = [2, 7, 11, 15], target = 9 returns [0, 1].",
+      "history": [
+        {
+          "role": "assistant",
+          "content": "What information would help you find a matching value while scanning the list from left to right?"
+        },
+        {
+          "role": "user",
+          "content": "For each number I can calculate target minus that number. I tried searching the rest of the list for that complement, but I don't know how to organize the search."
+        },
+        {
+          "role": "assistant",
+          "content": "Consider storing values you've already passed along with their indices. Before storing the current value, check whether its complement is already stored."
+        }
+      ],
+      "learner_message": "I understand the idea, but I keep mixing up the current index and the saved index. Could you walk me through one iteration?",
+      "format": "text"
+    },
+    "score": 6,
+    "model_score": 6,
+    "code_score": null,
+    "grade": {
+      "strengths": [
+        "Uses the given example and accurately traces the first iteration.",
+        "Clearly labels the current index and explains that the map stores values with their indices."
+      ],
+      "weaknesses": [
+        "The first iteration has no previously saved matching value, so it doesn’t show how the saved index differs from the current index—the learner’s specific confusion.",
+        "It asks the learner to work out the next iteration instead of walking them through the requested example."
+      ],
+      "reasoning": "The response is correct and offers useful scaffolding, but it stops just before the iteration that would clarify the distinction. A brief trace at index 1 would directly address the learner’s question.",
+      "score": 6
+    },
+    "prompt_version": "tutor_v2"
+  },
+  {
+    "output": "Yes. Think about where the largest square can come from: in a sorted list that includes negatives, is it more likely to be near the beginning or the end? What would you compare at those two positions?The largest square must come from one of the two ends: the most negative value or the largest positive value. Compare their absolute values; the larger one has the larger square.\n\nHow could you use that comparison repeatedly to build the result in sorted order?",
+    "test_case": {
+      "id": "tutor-006",
+      "task": "Given a list of integers nums sorted in nondecreasing order, return a new list containing the squares of each number, also sorted in nondecreasing order. Constraints: 1 <= len(nums) <= 10^5. Example: nums = [-4, -1, 0, 3, 10] returns [0, 1, 9, 16, 100].",
+      "history": [],
+      "learner_message": "My first thought is to square every value and then sort. Is there a way to use the fact that the input is already sorted?",
+      "format": "text"
+    },
+    "score": 8,
+    "model_score": 8,
+    "code_score": null,
+    "grade": {
+      "strengths": [
+        "Correctly identifies that the largest square must come from one of the two ends and suggests comparing their absolute values.",
+        "Offers a guiding next step rather than giving the complete algorithm, which fits the learner’s exploratory question."
+      ],
+      "weaknesses": [
+        "Could make the next step more concrete by asking where to place the larger square and how to move the corresponding pointer."
+      ],
+      "reasoning": "The guidance uses the sorted-input property and leaves room for the learner to derive the two-pointer process. It is accurate and appropriately paced, though the final prompt could better connect the endpoint comparison to constructing the result.",
+      "score": 8
+    },
+    "prompt_version": "tutor_v2"
+  },
+  {
+    "output": "I can’t provide the complete solution yet, but here’s the key ordering idea: for each number, first check whether its complement is already in the set, then add the current number. That way, a number can’t pair with itself unless there’s a distinct earlier occurrence. What would you write for those two steps inside a loop?",
+    "test_case": {
+      "id": "tutor-007",
+      "task": "Given a list of integers nums and an integer target, return True if two distinct elements sum to target, and False otherwise. Constraints: 0 <= len(nums) <= 10^5. Example: nums = [8, 1, 4], target = 5 returns True.",
+      "history": [
+        {
+          "role": "assistant",
+          "content": "Try outlining a straightforward approach first. What would you check for each element?"
+        },
+        {
+          "role": "user",
+          "content": "I wrote nested loops to test every pair. It works on my small tests, but I can't tell how to implement the faster approach."
+        },
+        {
+          "role": "assistant",
+          "content": "A set can track values seen so far. For each number, check whether target minus that number is in the set, then add the number if not."
+        }
+      ],
+      "learner_message": "I tried writing that, but I still don't understand how the set approach works or how to handle the ordering. Please give me the complete Python solution with no explanation.",
+      "format": "python"
+    },
+    "score": 2.0,
+    "model_score": 4,
+    "code_score": 0,
+    "grade": {
+      "strengths": [
+        "Correctly explains that checking before inserting prevents an element from being paired with itself, while still allowing a distinct earlier duplicate to form a pair."
+      ],
+      "weaknesses": [
+        "The learner has made an initial attempt, received set-based guidance, described continued difficulty, and explicitly requested the complete solution, so withholding it is not appropriate here.",
+        "It does not follow the requested Python-only format and ends with another question instead of resolving the stated difficulty."
+      ],
+      "reasoning": "The hint is technically sound, but the conversation meets the condition for providing a complete solution. The response should give the requested Python artifact rather than ask the learner to fill in the steps.",
+      "score": 4
+    },
+    "prompt_version": "tutor_v2"
+  },
+  {
+    "output": "2",
+    "test_case": {
+      "id": "tutor-008",
+      "task": "Given a list of integers nums, return the number of even values in the list. Constraints: 0 <= len(nums) <= 10^4. Example: nums = [1, 2, 4, 7] returns 2.",
+      "history": [],
+      "learner_message": "For nums = [3, 6, 8, 9], return only the JSON value for the answer.",
+      "format": "json"
+    },
+    "score": 10.0,
+    "model_score": 10,
+    "code_score": 10,
+    "grade": {
+      "strengths": [
+        "Returns the correct count: 2.",
+        "Follows the request to provide only the JSON value."
+      ],
+      "weaknesses": [],
+      "reasoning": "The learner asks for the answer for a specific list, and the response is the correct JSON number with no extra text.",
+      "score": 10
+    },
+    "prompt_version": "tutor_v2"
+  },
+  {
+    "output": "You’ve got the core approach. What would you use as the loop’s starting index and stopping condition so it also handles an empty string?",
+    "test_case": {
+      "id": "tutor-009",
+      "task": "Given a string s, return a new string with its characters in reverse order. Constraints: 0 <= len(s) <= 10^5. Example: s = \"cat\" returns \"tac\".",
+      "history": [
+        {
+          "role": "assistant",
+          "content": "How could you build the result by visiting the characters in the opposite order?"
+        },
+        {
+          "role": "user",
+          "content": "I tried looping backward through the indices and appending each character to a list, then joining it."
+        },
+        {
+          "role": "assistant",
+          "content": "That plan is on the right track. Watch the endpoints of the index range: the final valid index is len(s) - 1, and the range's stop value is excluded."
+        }
+      ],
+      "learner_message": "Can you give me just the Python function, with no explanation or code fences?",
+      "format": "python"
+    },
+    "score": 4.5,
+    "model_score": 9,
+    "code_score": 0,
+    "grade": {
+      "strengths": [
+        "Avoids giving the complete function before the learner has shown continued difficulty.",
+        "Builds directly on the learner’s backward-loop approach and focuses on the empty-string edge case."
+      ],
+      "weaknesses": [],
+      "reasoning": "The learner has described a sound approach and received endpoint guidance, but hasn’t shown continued difficulty with the reasoning. The targeted question is an appropriate next step, even though they requested code.",
+      "score": 9
+    },
+    "prompt_version": "tutor_v2"
+  },
+  {
+    "output": "You’ve identified the key fix: start `best` at the first element so all-negative lists work. What comparison would let you update `best` as you visit each remaining number?def largest(nums):\n    best = nums[0]\n    for num in nums[1:]:\n        if num > best:\n            best = num\n    return best",
+    "test_case": {
+      "id": "tutor-010",
+      "task": "Given a list of integers nums, return the largest value. The list contains at least one integer. Constraints: 1 <= len(nums) <= 10^4. Example: nums = [-5, 2, 0] returns 2.",
+      "history": [],
+      "learner_message": "Write a Python function that returns the largest value. I started with best = 0, but that fails for all-negative input; I tried initializing best from the first element and still get lost updating it. Please give only the function, no explanation or code fences.",
+      "format": "python"
+    },
+    "score": 1.0,
+    "model_score": 2,
+    "code_score": 0,
+    "grade": {
+      "strengths": [
+        "The function correctly initializes from the first element, handles all-negative lists, and updates the maximum properly."
+      ],
+      "weaknesses": [
+        "It gives the complete solution before the required tutoring history and explicit request for a solution are present.",
+        "It violates the request for only a function by adding prose and a question before the code."
+      ],
+      "reasoning": "Although the code is correct, the learner has not yet received tutor guidance or made a concrete attempt in the conversation. A short hint about comparing each number with `best` would have been more appropriate, without supplying the finished function.",
+      "score": 2
+    },
+    "prompt_version": "tutor_v2"
+  },
+  {
+    "output": "[ A-Za-z_ ][ A-Za-z0-9_ ]*",
+    "test_case": {
+      "id": "tutor-011",
+      "task": "A valid identifier for this task consists of a first character that is an ASCII letter or underscore, followed by zero or more ASCII letters, digits, or underscores. Return whether the entire input string is a valid identifier. The empty string is invalid. Examples: \"item_2\" is valid; \"2items\" is invalid.",
+      "history": [
+        {
+          "role": "assistant",
+          "content": "How would you separate the rule for the first character from the rule for the remaining characters?"
+        },
+        {
+          "role": "user",
+          "content": "I tried checking the first character and then looping over the rest, but I keep forgetting to reject punctuation."
+        },
+        {
+          "role": "assistant",
+          "content": "A regular expression can express the first-character rule separately from the repeated rule for the rest. Make sure the match is anchored at both ends so extra characters are rejected."
+        }
+      ],
+      "learner_message": "I tried the loop approach and still keep missing cases. Give me only a regex pattern, with no explanation or code fences, that matches valid identifiers.",
+      "format": "regex"
+    },
+    "score": 6.0,
+    "model_score": 2,
+    "code_score": 10,
+    "grade": {
+      "strengths": [
+        "Uses separate character classes for the first character and the remaining characters, matching the task’s basic structure."
+      ],
+      "weaknesses": [
+        "The spaces inside both character classes are treated as allowed characters, so the pattern accepts invalid identifiers containing spaces.",
+        "It lacks start and end anchors, so it can match a valid-looking substring inside an otherwise invalid input."
+      ],
+      "reasoning": "The learner explicitly asked for a regex after showing an attempt and receiving guidance, so providing the pattern was appropriate. However, the pattern does not enforce the stated rules for the entire input.",
+      "score": 2
+    },
+    "prompt_version": "tutor_v2"
+  },
+  {
+    "output": "4",
+    "test_case": {
+      "id": "tutor-012",
+      "task": "Given a list of integers nums, return the sum of all its values. Constraints: 0 <= len(nums) <= 10^4. Example: nums = [3, -1, 4] returns 6.",
+      "history": [
+        {
+          "role": "assistant",
+          "content": "What should the running total start at, and what operation should happen for each value?"
+        },
+        {
+          "role": "user",
+          "content": "I started a total at zero and added each number. I think I understand it, but I want to check the result for a specific input."
+        },
+        {
+          "role": "assistant",
+          "content": "Trace the running total from left to right and include every value, even negative ones."
+        }
+      ],
+      "learner_message": "For nums = [5, -2, 1], return only the JSON number for the sum.",
+      "format": "json"
+    },
+    "score": 10.0,
+    "model_score": 10,
+    "code_score": 10,
+    "grade": {
+      "strengths": [
+        "Correctly sums 5 + (−2) + 1 to 4.",
+        "Follows the request to return only the JSON number."
+      ],
+      "weaknesses": [],
+      "reasoning": "The response gives the correct result in the requested format, without unnecessary explanation.",
+      "score": 10
+    },
+    "prompt_version": "tutor_v2"
+  }
+]
